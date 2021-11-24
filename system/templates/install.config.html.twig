@@ -1,7 +1,23 @@
 <form action="{{ constant('BASE_URL') }}install/" method="post" autocomplete="off">
 	<input type="hidden" name="step" id="step" value="database" />
 	<table>
-		{% for value in ['server_path', 'mail_admin', 'mail_address'] %}
+		<tr>
+			<td>
+				<label for="vars_server_path">
+					<span>{{ locale.step_config_server_path  }}</span>
+				</label>
+				<br>
+				<select name="vars[server_path]" id="vars_server_path">
+				{% for server in server_list %}
+					<option value="/home/otserv/{{ server }}">{{ server }}</option>
+				{% endfor %}
+				<select>
+			</td>
+			<td>
+				<em>Path to your TFS main directory, where you have config.lua located.</em>
+			</td>
+		</tr>
+		{% for value in ['mail_admin', 'mail_address'] %}
 		<tr>
 			<td>
 				<label for="vars_{{ value }}">

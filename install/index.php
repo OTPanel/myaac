@@ -191,7 +191,7 @@ clearstatcache();
 if(is_writable(CACHE) && (MYAAC_OS != 'WINDOWS' || win_is_writable(CACHE))) {
 	if(!file_exists(BASE . 'install/ip.txt')) {
 		$content = warning('AAC installation is disabled. To enable it make file <b>ip.txt</b> in install/ directory and put there your IP.<br/>
-		Your IP is:<br /><b>' . $_SERVER['REMOTE_ADDR'] . '</b>', true);
+		Execute this line:<br /><b>truncate -s 0 install/ip.txt && echo "' . $_SERVER['REMOTE_ADDR'] . '" >> install/ip.txt</b>', true);
 	}
 	else {
 		$file_content = trim(file_get_contents(BASE . 'install/ip.txt'));
@@ -207,7 +207,7 @@ if(is_writable(CACHE) && (MYAAC_OS != 'WINDOWS' || win_is_writable(CACHE))) {
 		{
 			$content = warning('In file <b>install/ip.txt</b> must be your IP!<br/>
 			In file is:<br /><b>' . nl2br($file_content) . '</b><br/>
-			Your IP is:<br /><b>' . $_SERVER['REMOTE_ADDR'] . '</b>', true);
+			Execute this line:<br /><b>truncate -s 0 install/ip.txt && echo "' . $_SERVER['REMOTE_ADDR'] . '" >> install/ip.txt</b>', true);
 		}
 		else {
 			ob_start();
